@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLocal", "AppLocal\AppLocal.csproj", "{A02C480D-856C-42DE-9DBE-DEE24031F020}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "AccesoDatos\Entities.csproj", "{A9B9BF98-EA95-4697-B2C7-3A05CEE5E8D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLogic", "AppLogic\AppLogic.csproj", "{827DB7DE-3D18-4F4A-91B0-13B38B1E039E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A02C480D-856C-42DE-9DBE-DEE24031F020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02C480D-856C-42DE-9DBE-DEE24031F020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02C480D-856C-42DE-9DBE-DEE24031F020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02C480D-856C-42DE-9DBE-DEE24031F020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B9BF98-EA95-4697-B2C7-3A05CEE5E8D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B9BF98-EA95-4697-B2C7-3A05CEE5E8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B9BF98-EA95-4697-B2C7-3A05CEE5E8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B9BF98-EA95-4697-B2C7-3A05CEE5E8D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{827DB7DE-3D18-4F4A-91B0-13B38B1E039E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827DB7DE-3D18-4F4A-91B0-13B38B1E039E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827DB7DE-3D18-4F4A-91B0-13B38B1E039E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827DB7DE-3D18-4F4A-91B0-13B38B1E039E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://polizas.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AccesoDatos\\Entities.csproj
+		SccProjectName1 = AccesoDatos
+		SccLocalPath1 = AccesoDatos
+		SccProjectUniqueName2 = AppLocal\\AppLocal.csproj
+		SccProjectName2 = AppLocal
+		SccLocalPath2 = AppLocal
+		SccProjectUniqueName3 = AppLogic\\AppLogic.csproj
+		SccProjectName3 = AppLogic
+		SccLocalPath3 = AppLogic
+	EndGlobalSection
+EndGlobal

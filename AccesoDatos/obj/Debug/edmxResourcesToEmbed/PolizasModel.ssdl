@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PolizasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PolizasModelStoreContainer">
+    <EntitySet Name="PolizaSet" EntityType="PolizasModel.Store.PolizaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuariosSet" EntityType="PolizasModel.Store.UsuariosSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolesSet" EntityType="PolizasModel.Store.RolesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClienteSet" EntityType="PolizasModel.Store.ClienteSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsuariosRoles" Association="PolizasModel.Store.UsuariosRoles">
+      <End Role="Usuarios" EntitySet="UsuariosSet" />
+      <End Role="Roles" EntitySet="RolesSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClientePoliza" Association="PolizasModel.Store.ClientePoliza">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Poliza" EntitySet="PolizaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PolizaSet">
+    <Key>
+      <PropertyRef Name="NumPoliza" />
+    </Key>
+    <Property Name="NumPoliza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fechaVigencia" Type="datetime" Nullable="false" />
+    <Property Name="cobertura" Type="int" Nullable="false" />
+    <Property Name="observaciones" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cliente_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuariosSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cedula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="UsuariosRoles">
+    <End Role="Usuarios" Type="PolizasModel.Store.UsuariosSet" Multiplicity="*" />
+    <End Role="Roles" Type="PolizasModel.Store.RolesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientePoliza">
+    <End Role="Cliente" Type="PolizasModel.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Poliza" Type="PolizasModel.Store.PolizaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Poliza">
+        <PropertyRef Name="Cliente_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

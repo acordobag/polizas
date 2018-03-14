@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PolizasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PolizasModelStoreContainer">
+    <EntitySet Name="PolizaSet" EntityType="PolizasModel.Store.PolizaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuariosSet" EntityType="PolizasModel.Store.UsuariosSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolesSet" EntityType="PolizasModel.Store.RolesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClienteSet" EntityType="PolizasModel.Store.ClienteSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsuariosRoles" Association="PolizasModel.Store.UsuariosRoles">
+      <End Role="Usuarios" EntitySet="UsuariosSet" />
+      <End Role="Roles" EntitySet="RolesSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClientePoliza" Association="PolizasModel.Store.ClientePoliza">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Poliza" EntitySet="PolizaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PolizaSet">
+    <Key>
+      <PropertyRef Name="NumPoliza" />
+    </Key>
+    <Property Name="NumPoliza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fechaVigencia" Type="datetime" Nullable="false" />
+    <Property Name="cobertura" Type="int" Nullable="false" />
+    <Property Name="observaciones" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cliente_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuariosSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cedula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="UsuariosRoles">
+    <End Role="Usuarios" Type="PolizasModel.Store.UsuariosSet" Multiplicity="*" />
+    <End Role="Roles" Type="PolizasModel.Store.RolesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientePoliza">
+    <End Role="Cliente" Type="PolizasModel.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Poliza" Type="PolizasModel.Store.PolizaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Poliza">
+        <PropertyRef Name="Cliente_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PolizasModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="PolizasModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PolizaSet" EntityType="PolizasModel.Poliza" />
+          <EntitySet Name="UsuariosSet" EntityType="PolizasModel.Usuarios" />
+          <EntitySet Name="RolesSet" EntityType="PolizasModel.Roles" />
+          <AssociationSet Name="UsuariosRoles" Association="PolizasModel.UsuariosRoles">
+            <End Role="Usuarios" EntitySet="UsuariosSet" />
+            <End Role="Roles" EntitySet="RolesSet" />
+          </AssociationSet>
+          <EntitySet Name="ClienteSet" EntityType="PolizasModel.Cliente" />
+          <AssociationSet Name="ClientePoliza" Association="PolizasModel.ClientePoliza">
+            <End Role="Cliente" EntitySet="ClienteSet" />
+            <End Role="Poliza" EntitySet="PolizaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Poliza">
+          <Key>
+            <PropertyRef Name="NumPoliza" />
+          </Key>
+          <Property Name="NumPoliza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fechaVigencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cobertura" Type="Int32" Nullable="false" />
+          <Property Name="observaciones" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Cliente" Relationship="PolizasModel.ClientePoliza" FromRole="Poliza" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Rol" Relationship="PolizasModel.UsuariosRoles" FromRole="Usuarios" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="UsuariosRoles">
+          <End Type="PolizasModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="PolizasModel.Roles" Role="Roles" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Poliza" Relationship="PolizasModel.ClientePoliza" FromRole="Cliente" ToRole="Poliza" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="ClientePoliza">
+          <End Type="PolizasModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="PolizasModel.Poliza" Role="Poliza" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PolizasModelStoreContainer" CdmEntityContainer="PolizasModelContainer">
+    <EntitySetMapping Name="PolizaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PolizasModel.Poliza)">
+        <MappingFragment StoreEntitySet="PolizaSet">
+          <ScalarProperty Name="NumPoliza" ColumnName="NumPoliza" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fechaVigencia" ColumnName="fechaVigencia" />
+          <ScalarProperty Name="cobertura" ColumnName="cobertura" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuariosSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PolizasModel.Usuarios)">
+        <MappingFragment StoreEntitySet="UsuariosSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PolizasModel.Roles)">
+        <MappingFragment StoreEntitySet="RolesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClienteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PolizasModel.Cliente)">
+        <MappingFragment StoreEntitySet="ClienteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UsuariosRoles" TypeName="PolizasModel.UsuariosRoles" StoreEntitySet="UsuariosSet">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="Id" ColumnName="Rol_Id" />
+      </EndProperty>
+      <EndProperty Name="Usuarios">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClientePoliza" TypeName="PolizasModel.ClientePoliza" StoreEntitySet="PolizaSet">
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="Id" ColumnName="Cliente_Id" />
+      </EndProperty>
+      <EndProperty Name="Poliza">
+        <ScalarProperty Name="NumPoliza" ColumnName="NumPoliza" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

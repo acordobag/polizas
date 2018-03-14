@@ -1,0 +1,17 @@
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AppLocal.exe.config
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AppLocal.exe
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AppLocal.pdb
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AccesoDatos.dll
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AppLogic.dll
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\EntityFramework.dll
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AccesoDatos.pdb
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\AppLogic.pdb
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\EntityFramework.xml
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\obj\Debug\AppLocal.csprojResolveAssemblyReference.cache
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\obj\Debug\AppLocal.FormCliente.resources
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\obj\Debug\AppLocal.Properties.Resources.resources
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\obj\Debug\AppLocal.csproj.GenerateResource.Cache
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\obj\Debug\AppLocal.exe
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\obj\Debug\AppLocal.pdb
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\adria\onedrive\documentos\visual studio 2015\Projects\Polizas\AppLocal\bin\Debug\EntityFramework.SqlServer.xml

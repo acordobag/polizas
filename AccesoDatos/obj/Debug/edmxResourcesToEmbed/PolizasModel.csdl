@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PolizasModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="PolizasModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PolizaSet" EntityType="PolizasModel.Poliza" />
+    <EntitySet Name="UsuariosSet" EntityType="PolizasModel.Usuarios" />
+    <EntitySet Name="RolesSet" EntityType="PolizasModel.Roles" />
+    <AssociationSet Name="UsuariosRoles" Association="PolizasModel.UsuariosRoles">
+      <End Role="Usuarios" EntitySet="UsuariosSet" />
+      <End Role="Roles" EntitySet="RolesSet" />
+    </AssociationSet>
+    <EntitySet Name="ClienteSet" EntityType="PolizasModel.Cliente" />
+    <AssociationSet Name="ClientePoliza" Association="PolizasModel.ClientePoliza">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Poliza" EntitySet="PolizaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Poliza">
+    <Key>
+      <PropertyRef Name="NumPoliza" />
+    </Key>
+    <Property Name="NumPoliza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="fechaVigencia" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="cobertura" Type="Int32" Nullable="false" />
+    <Property Name="observaciones" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Cliente" Relationship="PolizasModel.ClientePoliza" FromRole="Poliza" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Correo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Rol" Relationship="PolizasModel.UsuariosRoles" FromRole="Usuarios" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="UsuariosRoles">
+    <End Type="PolizasModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="PolizasModel.Roles" Role="Roles" Multiplicity="1" />
+  </Association>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cedula" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Poliza" Relationship="PolizasModel.ClientePoliza" FromRole="Cliente" ToRole="Poliza" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="ClientePoliza">
+    <End Type="PolizasModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="PolizasModel.Poliza" Role="Poliza" Multiplicity="*" />
+  </Association>
+</Schema>
